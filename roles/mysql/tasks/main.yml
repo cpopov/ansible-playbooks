@@ -1,0 +1,12 @@
+---
+# These tasks install http and the php modules.
+
+- name: Install MySQL
+  yum: name={{ item }} state=present
+  with_items:
+   - mysql
+
+
+- name: mysql service state
+  service: name=mysql state=started enabled=yes
+

@@ -1,0 +1,22 @@
+
+#IntelliJ
+/.idea
+/*.iml
+**/*.iml
+/*.ipr
+/*.iws
+
+#Eclipse
+/.project
+**/.project
+/.settings
+**/.settings
+/.classpath
+**/.classpath
+
+#MacOS
+/.DS_Store
+**/.DS_Store
+
+#Other binaries
+*.rpm

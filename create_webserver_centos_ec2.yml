@@ -1,0 +1,32 @@
+# Launches an instance in EC2 and provisions it with:
+# - centos
+# - httpd
+# - cp4l web app
+#
+# Requires env variables AWS_SECRET_KEY, AWS_ACCESS_KEY
+#
+# Uses image ami-e4ff5c93 - CentOS 7 x86_64 (2014_09_29) EBS HVM
+
+
+- name: Create EC2 instance(s)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    keypair: {{keypair}}
+    instance_type: t2.micro
+    image: ami-e4ff5c93
+    region: eu-west-1
+    vpc_subnet_id: {{vpc_subnet_id}}
+
+  roles:
+    - ec2
+
+- name: Configure instance(s)
+  hosts: launched
+  sudo: yes
+  gather_facts: yes
+  remote_user: centos
+  roles:
+    - httpd

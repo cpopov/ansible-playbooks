@@ -1,0 +1,16 @@
+---
+# Creates a VM at Digital Ocean
+# Requires environment variables  DO_API_KEY and DO_API_TOKEN
+
+- digital_ocean: >
+      state=present
+      command=droplet
+      name=ecp-test-webserver
+      api_token=XXX
+      size_id=2gb
+      region_id=ams2
+      image_id=fedora-19-x64
+      wait_timeout=500
+  register: my_droplet
+- debug: msg="ID is {{ my_droplet.droplet.id }}"
+- debug: msg="IP is {{ my_droplet.droplet.ip_address }}"
