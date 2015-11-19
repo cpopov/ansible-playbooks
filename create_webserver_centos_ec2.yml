@@ -14,11 +14,16 @@
   gather_facts: false
 
   vars:
-    keypair: {{keypair}}
+    keypair: "{{keypair}}"
+    security_groups:
+      - default
+      - allow-ssh
+      - allow-http
     instance_type: t2.micro
     image: ami-e4ff5c93
     region: eu-west-1
-    vpc_subnet_id: {{vpc_subnet_id}}
+    vpc_subnet_id: "{{vpc_subnet_id}}"
+    count: 1
 
   roles:
     - ec2
